@@ -1,18 +1,46 @@
+class ElementQueue {
+  ElementQueue? _previous;
+  ElementQueue? _next;
+  String _value = '';
+
+  ElementQueue({ElementQueue? previous, ElementQueue? next, required String value}) {
+    this._previous = previous;
+    this._next = next;
+    this._value = value;
+  }
+
+  ElementQueue? get previous {
+    return _previous;
+  }
+
+  ElementQueue? get next {
+    return _next;
+  }
+
+  String get value {
+    return _value;
+  }
+}
+
 class Queue {
   String _title = 'Fila com apontadores';
-  Map<String, Map<String, Map?>> _firtElement = {};
-  Map<String, Map<String, Map?>> _lastElement = {};
+  ElementQueue? _firtElement;
+  ElementQueue? _lastElement;
   int _size = 0;
+
+  Queue() {
+    _firtElement = _lastElement = null;
+  }
 
   String get title {
     return _title;
   }
 
-  Map<String, Map<String, Map?>> get firtElement {
+  ElementQueue? get firtElement {
     return _firtElement;
   }
 
-  Map<String, Map<String, Map?>> get lastElement {
+  ElementQueue? get lastElement {
     return _lastElement;
   }
 
@@ -21,21 +49,13 @@ class Queue {
   }
 
   void add(String value) {
-    if (firtElement.isEmpty) {
-      _firtElement = {
-        value: {
-          'previous': null,
-          'next': null,
-        }
-      };
-      _lastElement = _firtElement;
+    ElementQueue newElement = ElementQueue(value: value);
+    if (firtElement == null) {
+      _firtElement = _lastElement = newElement;
     } else {
-      _lastElement = {
-        value: {
-          'previous': _lastElement,
-          'next': null,
-        }
-      };
+      _lastElement?._next = newElement;
+      newElement._previous = _lastElement;
+      _lastElement = newElement;
     }
     _size++;
   }

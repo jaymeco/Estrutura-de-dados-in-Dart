@@ -11,6 +11,6 @@ void main() {
     return;
   }
   print('''Número de elementos: ${myQueue.size}''');
-  print('''Primeiro da fila: ${myQueue.firtElement}''');
-  print('''Último da fila: ${myQueue.lastElement}''');
+  print('''Primeiro da fila: ${myQueue.firtElement?.value}''');
+  print('''Último da fila: ${myQueue.lastElement?.value}''');
 }
