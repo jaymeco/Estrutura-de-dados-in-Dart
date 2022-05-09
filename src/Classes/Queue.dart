@@ -3,7 +3,8 @@ class ElementQueue {
   ElementQueue? _next;
   String _value = '';
 
-  ElementQueue({ElementQueue? previous, ElementQueue? next, required String value}) {
+  ElementQueue(
+      {ElementQueue? previous, ElementQueue? next, required String value}) {
     this._previous = previous;
     this._next = next;
     this._value = value;
@@ -58,5 +59,21 @@ class Queue {
       _lastElement = newElement;
     }
     _size++;
+  }
+
+  void remove() {
+    if (_firtElement == null) {
+      print('\nNão pode remover items de uma fila vazia!');
+      return;
+    }
+
+    _firtElement?.next?._previous = null;
+    _firtElement = _firtElement?._next;
+    _size--;
+  }
+
+  void removeAll() {
+    _firtElement = _lastElement;
+    _size = 0;
   }
 }
