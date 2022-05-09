@@ -92,4 +92,20 @@ class Queue {
     }
     print(queue);
   }
+
+  void printReverseQueue() {
+    ElementQueue? aux = _lastElement;
+    String queue = 'Fila de elementos (reversa): ';
+    for (int i = 0; i < _size; i++) {
+      if (aux != null) {
+        if (i == 0) {
+          queue += '${_lastElement?.value}';
+        } else {
+          queue += ', ${aux.previous?.value}';
+          aux = aux.previous;
+        }
+      }
+    }
+    print(queue);
+  }
 }
