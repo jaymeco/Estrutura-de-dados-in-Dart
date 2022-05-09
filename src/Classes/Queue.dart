@@ -76,4 +76,20 @@ class Queue {
     _firtElement = _lastElement;
     _size = 0;
   }
+
+  void printQueue() {
+    ElementQueue? aux = _firtElement;
+    String queue = 'Fila de elementos: ';
+    for (int i = 0; i < _size; i++) {
+      if (aux != null) {
+        if (i == 0) {
+          queue += '${_firtElement?.value}';
+        } else {
+          queue += ', ${aux.next?.value}';
+          aux = aux.next;
+        }
+      }
+    }
+    print(queue);
+  }
 }
