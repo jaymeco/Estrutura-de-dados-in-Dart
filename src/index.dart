@@ -6,7 +6,14 @@ void main() {
 
   myQueue.add('jayme');
   myQueue.add('paulo');
-  if(myQueue.size <= 0) {
+  myQueue.add('carlos');
+  myQueue.add('joao');
+  myQueue.add('caio');
+  // myQueue.remove();
+  // myQueue.remove();
+  // myQueue.removeAll();
+  myQueue.printQueue();
+  if (myQueue.size <= 0) {
     print('A fila está vazia!');
     return;
   }
